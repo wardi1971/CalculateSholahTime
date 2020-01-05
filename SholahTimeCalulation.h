@@ -25,14 +25,14 @@ class SholahTimeCalulation
   {
     public    :
 		float sholahTime[SholatCount];
-		char  sholahName[8][10]  ={"Imsak", 
-									"Subuh",
-									"Terbit",
-									"Dhuha",
-									"Dzuhur",
-									"Ashar",
-									"Maghrib",
-									"Isya"};
+		char  sholahName[8][10]  =     {"Imsak", 
+						"Subuh",
+						"Terbit",
+						"Dhuha",
+						"Dzuhur",
+						"Ashar",
+						"Maghrib",
+						"Isya"};
 	  
 		SholahTimeCalulation(float latitude, float longitude, float elevation,int timezone);
 		SholahTimeCalulation(float latitude, float longitude, int timezone);
@@ -43,7 +43,6 @@ class SholahTimeCalulation
 		void 	dateSet(int year,int month,int date);
 		void 	ihtiyatiSet(int ihtiyati);
 		void 	calculate();
-		void 	calculate(float latitude, float longitude, float elevation,int timezone,int year,int month,int date);
 		void 	getTimePart(int idShol,int& hourPart, int& minutePart);
 		void 	getTimeString(int idShol,char* stringTime);
       
