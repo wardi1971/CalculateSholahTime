@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
 //===========================
 //   Constructor
 //===========================
@@ -75,14 +74,28 @@ void SholahTimeCalulation::getTimePart(int idShol,int& hourPart, int& minutePart
     minutePart      = floor((timeShol - (float)hourPart) * 60);
   }
 
+void SholahTimeCalulation::getTimePart(int idShol,int& hourPart, int& minutePart,int& secondPart) 
+  {
+    float timeShol  = fix_hour(sholahTime[idShol] + 0.5 / 3600);   // add 0.5 minutes to round
+    hourPart        = floor(timeShol);
+    minutePart      = floor((timeShol - (float)hourPart) * 60);
+	secondPart      = floor((timeShol - (float)hourPart - (float)minutePart/60) * 3600);
+  }
+
 void SholahTimeCalulation::getTimeString(int idShol,char* stringTime)
   {
     int hourPart,minutePart;
     getTimePart(idShol,hourPart,minutePart);
     sprintf(stringTime,"%02d:%02d",hourPart,minutePart);
   }
-
   
+void SholahTimeCalulation::getTimeString_long(int idShol,char* stringTime)
+  {
+    int hourPart,minutePart,secondPart;
+    getTimePart(idShol,hourPart,minutePart,secondPart);
+    sprintf(stringTime,"%02d:%02d:%02d",hourPart,minutePart,secondPart);
+  }
+    
 //===========================
 //Protected Methode
 //===========================
@@ -140,3 +153,4 @@ float SholahTimeCalulation::fix_angle(float a)
     a = a < 0.0 ? a + 360.0 : a;
     return a;
   }
+
